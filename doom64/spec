@@ -40,25 +40,25 @@ endseg
 beginseg
 	name "doom64_wad"
 	flags RAW
-	include "C:\Doom 64\Data\doom64.wad"
+	include "Data/doom64.wad"
 endseg
 
 beginseg
 	name "doom64_wmd"
 	flags RAW
-	include "C:\Doom 64\Data\doom64.wmd"
+	include "Data/doom64.wmd"
 endseg
 
 beginseg
 	name "doom64_wsd"
 	flags RAW
-	include "C:\Doom 64\Data\doom64.wsd"
+	include "Data/doom64.wsd"
 endseg
 
 beginseg
 	name "doom64_wdd"
 	flags RAW
-	include "C:\Doom 64\Data\doom64.wdd"
+	include "Data/doom64.wdd"
 endseg
 
 beginwave
