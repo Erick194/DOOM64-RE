@@ -1,0 +1,74 @@
+#include "i_main.h"
+
+/*
+ * ROM spec file
+ */
+beginseg
+	name "code"
+	flags BOOT OBJECT
+	entry I_Start
+	stack bootStack + STACKSIZE
+	include "codesegment.o"
+	include "$(ROOT)/usr/lib/PR/rspboot.o"
+	//include "$(ROOT)/usr/lib/PR/gspF3DLX.NoN.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX.NoN.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspL3DEX.fifo.o"
+	include "$(ROOT)/usr/lib/PR/aspMain.o"
+endseg
+
+beginseg
+	name "mem_heap"
+	flags OBJECT
+	after "code"
+	include "mem_heap.o"
+endseg
+
+beginseg
+	name "audio_heap"
+	flags OBJECT
+	after "mem_heap"
+	include "audio_heap.o"
+endseg
+
+beginseg
+	name "cfb"
+	flags OBJECT
+	after "audio_heap"
+	include "cfb.o"
+endseg
+
+beginseg
+	name "doom64_wad"
+	flags RAW
+	include "Data/DOOM64.WAD"
+endseg
+
+beginseg
+	name "doom64_wmd"
+	flags RAW
+	include "Data/DOOM64.WMD"
+endseg
+
+beginseg
+	name "doom64_wsd"
+	flags RAW
+	include "Data/DOOM64.WSD"
+endseg
+
+beginseg
+	name "doom64_wdd"
+	flags RAW
+	include "Data/DOOM64.WDD"
+endseg
+
+beginwave
+	name "doom64"
+	include "code"
+	include "mem_heap"
+	include "audio_heap"
+	include "cfb"
+	include "doom64_wad"
+	include "doom64_wmd"
+	include "doom64_wsd"
+	include "doom64_wdd"
+endwave
