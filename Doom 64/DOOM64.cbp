@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DOOM64" />
+		<Option pch_mode="2" />
+		<Option compiler="null" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DOOM64" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="null" />
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DOOM64" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="null" />
+			</Target>
+		</Build>
+		<Unit filename="Makefile" />
+		<Unit filename="__elfcom.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="am_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="asci.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="audio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="audio.h" />
+		<Unit filename="audio_heap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="c_convert.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cfb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="d_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="d_screens.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decodes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="doomdata.h" />
+		<Unit filename="doomdef.h" />
+		<Unit filename="doominfo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="doominfo.h" />
+		<Unit filename="doomlib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="f_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funqueue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funqueue.h" />
+		<Unit filename="g_game.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="graph.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="graph.h" />
+		<Unit filename="i_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="i_main.h" />
+		<Unit filename="in_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="m_bbox.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="m_fixed.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="m_fixed_s.s" />
+		<Unit filename="m_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="m_password.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mem_heap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="n64cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="n64cmd.h" />
+		<Unit filename="p_base.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_ceilng.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_change.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_doors.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_enemy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_floor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_inter.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_lights.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_local.h" />
+		<Unit filename="p_macros.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_map.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_maputl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_mobj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_move.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_plats.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_pspr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_setup.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_shoot.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_sight.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_slide.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_spec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_spec.h" />
+		<Unit filename="p_switch.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_telept.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_tick.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="p_user.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="r_data.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="r_local.h" />
+		<Unit filename="r_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="r_phase1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="r_phase2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="r_phase3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="s_sound.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="seqload.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="seqload.h" />
+		<Unit filename="seqloadl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="seqloadr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="soundhw.h" />
+		<Unit filename="sounds.h" />
+		<Unit filename="spec" />
+		<Unit filename="sprinfo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="st_main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="st_main.h" />
+		<Unit filename="stdarg.h" />
+		<Unit filename="tables.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="vsprintf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="w_wad.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessapi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessapi.h" />
+		<Unit filename="wessapic.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessapim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessapip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessapit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessarc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessarc.h" />
+		<Unit filename="wessedit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessedit.h" />
+		<Unit filename="wessfade.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessfade.h" />
+		<Unit filename="wesshand.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wesshand.h" />
+		<Unit filename="wessint_s.h" />
+		<Unit filename="wessint_s.s" />
+		<Unit filename="wessseq.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessseq.h" />
+		<Unit filename="wessshell.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wessshell.h" />
+		<Unit filename="wesstrak.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="wesstrak.h" />
+		<Unit filename="wesstwek.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="z_zone.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
