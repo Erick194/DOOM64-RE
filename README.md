@@ -9,7 +9,7 @@ You can also go to this link if it is of your own interest https://n64.dev/
 
 To compile it is required to use Windows xp, you can also use virtual machine for such purposes
 
-Once the N64SDK is installed, copy the "Doom 64" folder to the root "C:" of your hard drive.
+Once the N64SDK is installed, copy the "doom64" folder to the root "C:" of your hard drive.
 
 For now it is compatible with the USA version of Doom 64.
 Of course, before compiling you need the data of the original Doom64 (DOOM64.WAD | DOOM64.WMD | DOOM64.WSD | DOOM64.WDD).
@@ -19,7 +19,7 @@ If you can't get the rom in "z64" format there is a file in the Tools folder tha
 Finally you run the MAKE_ROM.bat file to compile and obtain a file called doom64.n64
 
 ## Notes
-The project is created with CodeBlocks, although it does not serve to compile, but to have the code in order and verification.
+The project was created with CodeBlocks, although it does not serve to compile, but to have the code in order and verification.
 
 You can also use the WESSLIB.obj from the original Mortal Kombat Trilogy n64 and not use the code rebuilt by me.
 For this go to the file "wessarc.h" and remove the slashes from the text "//#define NOUSEWESSCODE" it should look like this "#define NOUSEWESSCODE".
