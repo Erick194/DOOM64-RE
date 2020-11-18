@@ -18,6 +18,8 @@ Edit the file ExtraerDatos.bat and you change the text "Doom 64 (Usa) .z64" by t
 If you can't get the rom in "z64" format there is a file in the Tools folder that is Tool64_v1.11.zip extract them and you can convert the "n64 and v64" formats to "z64".
 Finally you run the MAKE_ROM.bat file to compile and obtain a file called doom64.n64
 
+To compile using the iQue Player SDK, simply run `make` from the Doom 64 folder (if you encounter issues, try renaming it to Doom64 to avoid spaces).
+
 ## Notes
 The project is created with CodeBlocks, although it does not serve to compile, but to have the code in order and verification.
 
