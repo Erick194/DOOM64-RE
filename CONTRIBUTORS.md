@@ -1,6 +1,5 @@
 
-= DOOM64-RE contributors (sorted alphabetically)
-=
+## DOOM64-RE contributors (sorted alphabetically)
 
 * **[Darragh Coy (intacowetrust)](https://github.com/BodbDearg)**
 
@@ -16,8 +15,8 @@
     * Doom64-EX source code (DOOM 64 was based on PSX DOOM, thus can serve as a reference point for it):
     https://github.com/svkaiser/Doom64EX
 
-= DOOM64-RE hardware testers (sorted alphabetically)
-=
+## DOOM64-RE hardware testers (sorted alphabetically)
+
 * ** [CrashOveride] (https://github.com/CrashOveride95)**
 * ** [Immorpher] (Doom 64 Discord: https://discord.gg/Ktxz8nz)**
 * ** [sector666] (Kex Engine Discord: https://discord.gg/4gVTcD5)**
