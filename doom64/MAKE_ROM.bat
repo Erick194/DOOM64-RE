@@ -30,8 +30,6 @@ make
 @echo off
 ::remove_all:
 	del *.o
-	del *.elf
-	del *.tbl
 @echo on
 
 pause
