@@ -1,7 +1,9 @@
 #!smake
 include $(ROOT)/usr/include/make/PRdefs
 
+ifndef FINAL
 FINAL = YES
+endif
 
 ifeq ($(FINAL), YES)
 	OPTIMIZER       = -O2
