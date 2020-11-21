@@ -25,7 +25,7 @@ cd %mypath%
 
 @echo on
 
-make
+make PLATFORM=PARTNER
 
 @echo off
 ::remove_all:

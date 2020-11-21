@@ -599,7 +599,7 @@ void I_Init(void) // 80005C50
     osJamMesg(&sys_msgque_vbi2, (OSMesg)VID_MSG_KICKSTART, OS_MESG_NOBLOCK);
 }
 
-#include "STDARG.H"
+#include "stdarg.h"
 
 void I_Error(char *error, ...) // 80005F30
 {

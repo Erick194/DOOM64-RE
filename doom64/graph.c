@@ -421,7 +421,7 @@ putpattern(u32 color, int pos_x, int pos_y, char c)
 }
 
 
-#include "STDARG.H"
+#include "stdarg.h"
 
 static int pos_x_ = 0;
 static int pos_y_ = 1;

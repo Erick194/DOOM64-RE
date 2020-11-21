@@ -4,10 +4,10 @@ Welcome to the complete reverse engineering of Doom 64 by [GEC], this effort too
 
 ## Installation
 
-You need to download and install the N64 SDK https://n64squid.com/homebrew/n64-sdk/ide/
+You need to download and install the N64 SDK: https://mega.nz/#!AOYDkSxA!MuAqt8iRBk0GGbaqaXVYB9tfZxsquKg5QkbCRL3VOLM
 You can also go to this link if it is of your own interest https://n64.dev/
 
-To compile it is required to use Windows xp, you can also use virtual machine for such purposes
+To compile it is required to use Windows XP, you can also use virtual machine for such purposes
 
 Once the N64SDK is installed, copy the "doom64" folder to the root "C:" of your hard drive.
 
@@ -18,12 +18,33 @@ Edit the file ExtraerDatos.bat and you change the text "Doom 64 (Usa) .z64" by t
 If you can't get the rom in "z64" format there is a file in the Tools folder that is Tool64_v1.11.zip extract them and you can convert the "n64 and v64" formats to "z64".
 Finally you run the MAKE_ROM.bat file to compile and obtain a file called doom64.n64
 
+## iQue Installation
+
+You need to download and install the iQue SDK: https://ultra64.ca/resources/software/
+
+To compile it is required to use Red Hat Linux 9, you can also use virtual machine for such purposes
+
+Once the iQue SDK is installed, copy the "doom64" folder to your home folder.
+
+For now it is compatible with the USA version of Doom 64.
+
+Of course, before compiling you need the data of the original Doom64 (DOOM64.WAD | DOOM64.WMD | DOOM64.WSD | DOOM64.WDD).
+To obtain them, go to the Tools folder and compile the Doom64 Extractor (instructions in dm64ex.cpp)
+Then extract your rom ``./dm64ex -i baserom.us.z64`` 
+The romname is an example, however it must be in .z64.
+
+Then copy the extracted data to "Data" folder, then cd to the main doom64 folder and run make:
+
+``make PLATFORM=BB``
+
+Your ROM will be in doom64.n64, and can be ran on your iQue.
+
 ## Notes
 The project was created with CodeBlocks, although it does not serve to compile, but to have the code in order and verification.
 
-You can also use the WESSLIB.obj from the original Mortal Kombat Trilogy n64 and not use the code rebuilt by me.
+You can also use the WESSLIB.o from the original Mortal Kombat Trilogy n64 and not use the code rebuilt by me.
 For this go to the file "wessarc.h" and remove the slashes from the text "//#define NOUSEWESSCODE" it should look like this "#define NOUSEWESSCODE".
-Then go to the Makefile and remove the "#" from the following line (WESSLIB = #wesslib.obj) it should look like this (WESSLIB = wesslib.obj) and I added the "#" in the following line (ASMFILES = wessint_s.s) it should look like this (ASMFILES = #wessint_s.s) and you proceed to compile the Rom.
+Then go to the Makefile and remove the "#" from the following line (WESSLIB = #wesslib.o) it should look like this (WESSLIB = wesslib.o) and I added the "#" in the following line (ASMFILES = wessint_s.s) it should look like this (ASMFILES = #wessint_s.s) and you proceed to compile the Rom.
 
 Special thanks to my brothers for the help to the community in DoomWorld and Kaiser since he is the only one to see the progress of my work and helps me in several occasions.
 GEC Team Discord:  https://discord.gg/aEZD4Y7

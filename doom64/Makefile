@@ -1,47 +1,31 @@
 #!smake
 include $(ROOT)/usr/include/make/PRdefs
 
+ifndef FINAL
 FINAL = YES
+endif
 
 ifeq ($(FINAL), YES)
 	OPTIMIZER       = -O2
 	LCDEFS          = -DNDEBUG -D_FINALROM -DF3DEX_GBI
+ifeq ($(PLATFORM), BB)
+	N64LIB          = -lultra_rom
+else
 	N64LIB          = -lgultra_rom
-	TARGETS			= Doom64.n64
+endif
 else
 	OPTIMIZER       = -g3
-	LCDEFS          = -DF3DEX_GBI -DL3DEX_GBI -DDEBUG
+	LCDEFS          = -DF3DEX_GBI -DDEBUG
+ifeq ($(PLATFORM), BB)
+	N64LIB          = -lultra_d
+else
 	N64LIB          = -lgultra_d
-	TARGETS			= Doom64_d.n64
+endif
 endif
 
-APP =		Doom64.out
+APP	=	doom64.out
 
-HFILES =	graph.h\
-			doomdef.h \
-			doomdata.h \
-			doominfo.h \
-			r_local.h \
-			st_main.h \
-			sounds.h \
-			stdarg.h \
-			audio.h \
-			wessshell.h \
-			wesstwek.h \
-			wessapi.h \
-			wessapim.h \
-			wessapip.h \
-			wessapit.h \
-			wesshand.h \
-			wesstrak.h \
-			wessedit.h \
-			wessarc.h \
-			funqueue.h \
-			wessfade.h \
-			wessseq.h \
-			n64cmd.h \
-			seqload.h \
-			wessint_s.h
+TARGETS	=	doom64.n64
 
 ASMFILES   =	wessint_s.s
 #m_fixed_s.s
@@ -119,7 +103,7 @@ CODEFILES   =	graph.c asci.c \
 				seqloadl.c \
 				seqloadr.c
 
-WESSLIB   =	#wesslib.obj
+WESSLIB   =	#wesslib.o
 
 CODEOBJECTS =	$(CODEFILES:.c=.o) $(ASMFILES:.s=.o) $(WESSLIB)
 
@@ -132,14 +116,25 @@ CODESEGMENT =	codesegment.o
 OBJECTS =	$(CODESEGMENT) $(DATAOBJECTS)
 
 LCINCS =	-I. -I$(ROOT)/usr/include/PR
-LCOPTS =	-G 0
 
-LDFLAGS =	$(MKDEPOPT)  -L$(ROOT)/usr/lib $(N64LIB) -L$(GCCDIR)/mipse/lib -lkmc
 LDIRT  =	$(APP)
 
 PATH_PRINC =	$(ROOT)/usr/include/PR
 PATH_PRLIB =	$(ROOT)/usr/lib/PR
-ASFLAGS    =	-mips3 -non_shared -g -I$(PATH_PRINC) -I$(PATH_INC) -o
+PATH_INC	=	$(ROOT)/usr/include
+
+LCOPTS	=	-G 0
+LDFLAGS	=	-L$(ROOT)/usr/lib $(N64LIB)
+ASFLAGS	=	-non_shared -g -I$(PATH_PRINC) -I$(PATH_INC)
+
+ifeq ($(PLATFORM), BB)
+LCOPTS	+=	-mips2
+LDFLAGS	+=	-lgcc
+ASFLAGS	+=	-mips2
+else
+LDFLAGS	+=	-L$(GCCDIR)/mipse/lib -lkmc
+ASFLAGS	+=	-mips3
+endif
 
 default:	$(TARGETS)
 
@@ -148,21 +143,10 @@ include $(COMMONRULES)
 $(CODESEGMENT):	$(CODEOBJECTS)
 		$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
 
-ifeq ($(FINAL), YES)
 $(TARGETS) $(APP):	spec $(OBJECTS)
-	$(MAKEROM) -s 9 -r $(TARGETS) -e $(APP) spec
+ifeq ($(FINAL), YES)
+	$(MAKEROM) -s 64 -r $(TARGETS) spec
 	makemask $(TARGETS)
 else
-$(TARGETS) $(APP):	spec $(OBJECTS)
-	$(MAKEROM) -r $(TARGETS) -e $(APP) spec
-endif
-
-
-# for exeGCC CELF
-ifeq ($(GCC_CELF), ON)
-ifneq ($(FINAL), YES)
-CELFDIR = .
-include $(CELFRULES)
-$(CODEOBJECTS) $(DATAOBJECTS) :	$(CELFINFOFILES)
-endif
+	$(MAKEROM) -r $(TARGETS) spec
 endif

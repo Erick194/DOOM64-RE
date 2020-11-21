@@ -803,7 +803,7 @@ void ST_DrawSymbol(int xpos, int ypos, int index, int color) // 8002ADEC
                 (1 << 10), (1 << 10));
 }
 
-#include "STDARG.H"
+#include "stdarg.h"
 
 
 void ST_DebugSetPrintPos(int x, int y)
