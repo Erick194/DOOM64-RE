@@ -119,6 +119,7 @@ LDIRT  =	$(APP)
 
 PATH_PRINC =	$(ROOT)/usr/include/PR
 PATH_PRLIB =	$(ROOT)/usr/lib/PR
+PATH_INC	=	$(ROOT)/usr/include
 
 LCOPTS	=	-G 0
 LDFLAGS	=	-L$(ROOT)/usr/lib $(N64LIB)
