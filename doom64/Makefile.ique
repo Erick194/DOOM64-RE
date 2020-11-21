@@ -130,7 +130,7 @@ ifeq ($(FINAL), YES)
 	$(MAKEROM) -m -s 64 -r $(TARGETS) spec > $(MAPFILE)
 	makemask $(TARGETS)
 else
-	$(MAKEROM) -m -s 64 -r $(TARGETS) spec > $(MAPFILE)
+	$(MAKEROM) -m -r $(TARGETS) spec > $(MAPFILE)
 endif
 
 
