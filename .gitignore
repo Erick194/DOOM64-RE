@@ -2,9 +2,9 @@
 /doom64/*.o
 /doom64/Tools/dm64ex
 # Assets
-/doom64/Data/DOOM64.WMD
-/doom64/Data/DOOM64.WSD
-/doom64/Data/DOOM64.WDD
-/doom64/Data/DOOM64.WAD
+*.wad
+*.wsd
+*.wdd
+*.wmd
 
 !doom64/WESSLIB.o
