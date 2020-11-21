@@ -1,10 +1,14 @@
 # Code
 /doom64/*.o
+/doom64/*.out
 /doom64/Tools/dm64ex
 # Assets
 *.wad
 *.wsd
 *.wdd
 *.wmd
+
+*.n64
+*.z64
 
 !doom64/WESSLIB.o
