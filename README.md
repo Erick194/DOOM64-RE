@@ -35,7 +35,7 @@ The romname is an example, however it must be in .z64.
 
 Then copy the extracted data to "Data" folder, then cd to the main doom64 folder and run make:
 
-``make -f Makefile.ique``
+``make PLATFORM=BB``
 
 Your ROM will be in doom64.n64, and can be ran on your iQue.
 
