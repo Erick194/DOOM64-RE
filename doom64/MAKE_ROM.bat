@@ -28,8 +28,14 @@ cd %mypath%
 make PLATFORM=PARTNER
 
 @echo off
+::remove the ".o" extension from the wesslib temporarily:
+ren "WESSLIB.o" "WESSLIB"
+
 ::remove_all:
 	del *.o
+
+::restore the ".o" extension of the wesslib:
+ren "WESSLIB" "WESSLIB.o"
 @echo on
 
 pause
