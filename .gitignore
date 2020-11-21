@@ -1,9 +1,10 @@
 # Code
 /doom64/*.o
+/doom64/Tools/dm64ex
 # Assets
 /doom64/Data/doom64.wmd
 /doom64/Data/doom64.wsd
 /doom64/Data/doom64.wdd
 /doom64/Data/doom64.wad
 
-!doom64/WESSLIB.obj
+!doom64/WESSLIB.o

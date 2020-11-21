@@ -10,7 +10,6 @@ beginseg
 	stack bootStack + STACKSIZE
 	include "codesegment.o"
 	include "$(ROOT)/usr/lib/PR/rspboot.o"
-	//include "$(ROOT)/usr/lib/PR/gspF3DLX.NoN.fifo.o"
 	include "$(ROOT)/usr/lib/PR/gspF3DEX.NoN.fifo.o"
 	include "$(ROOT)/usr/lib/PR/gspL3DEX.fifo.o"
 	include "$(ROOT)/usr/lib/PR/aspMain.o"
@@ -40,25 +39,25 @@ endseg
 beginseg
 	name "doom64_wad"
 	flags RAW
-	include "Data/doom64.wad"
+	include "Data/DOOM64.WAD"
 endseg
 
 beginseg
 	name "doom64_wmd"
 	flags RAW
-	include "Data/doom64.wmd"
+	include "Data/DOOM64.WMD"
 endseg
 
 beginseg
 	name "doom64_wsd"
 	flags RAW
-	include "Data/doom64.wsd"
+	include "Data/DOOM64.WSD"
 endseg
 
 beginseg
 	name "doom64_wdd"
 	flags RAW
-	include "Data/doom64.wdd"
+	include "Data/DOOM64.WDD"
 endseg
 
 beginwave

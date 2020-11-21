@@ -6,42 +6,18 @@ FINAL = YES
 ifeq ($(FINAL), YES)
 	OPTIMIZER       = -O2
 	LCDEFS          = -DNDEBUG -D_FINALROM -DF3DEX_GBI
-	N64LIB          = -lgultra_rom
-	TARGETS			= Doom64.n64
+	N64LIB          = -lultra_rom
 else
 	OPTIMIZER       = -g3
-	LCDEFS          = -DF3DEX_GBI -DL3DEX_GBI -DDEBUG
-	N64LIB          = -lgultra_d
-	TARGETS			= Doom64_d.n64
+	LCDEFS          = -DF3DEX_GBI -DDEBUG
+	N64LIB          = -lultra_d
 endif
 
-APP =		Doom64.out
+APP =		doom64
 
-HFILES =	graph.h\
-			doomdef.h \
-			doomdata.h \
-			doominfo.h \
-			r_local.h \
-			st_main.h \
-			sounds.h \
-			stdarg.h \
-			audio.h \
-			wessshell.h \
-			wesstwek.h \
-			wessapi.h \
-			wessapim.h \
-			wessapip.h \
-			wessapit.h \
-			wesshand.h \
-			wesstrak.h \
-			wessedit.h \
-			wessarc.h \
-			funqueue.h \
-			wessfade.h \
-			wessseq.h \
-			n64cmd.h \
-			seqload.h \
-			wessint_s.h
+TARGETS	=	doom64.n64
+
+MAPFILE =	doom64.map
 
 ASMFILES   =	wessint_s.s
 #m_fixed_s.s
@@ -132,14 +108,15 @@ CODESEGMENT =	codesegment.o
 OBJECTS =	$(CODESEGMENT) $(DATAOBJECTS)
 
 LCINCS =	-I. -I$(ROOT)/usr/include/PR
-LCOPTS =	-G 0
+LCOPTS =	-G 0 -mips2
 
-LDFLAGS =	$(MKDEPOPT)  -L$(ROOT)/usr/lib $(N64LIB) -L$(GCCDIR)/mipse/lib -lkmc
-LDIRT  =	$(APP)
+LDFLAGS =	$(MKDEPOPT)  -L$(ROOT)/usr/lib $(N64LIB) -lgcc
+LDIRT  =	$(APP) $(MAPFILE)
 
+PATH_INC   =	$(ROOT)/usr/include
 PATH_PRINC =	$(ROOT)/usr/include/PR
 PATH_PRLIB =	$(ROOT)/usr/lib/PR
-ASFLAGS    =	-mips3 -non_shared -g -I$(PATH_PRINC) -I$(PATH_INC) -o
+ASFLAGS    =	-mips2 -non_shared -g -I$(PATH_PRINC) -I$(PATH_INC)
 
 default:	$(TARGETS)
 
@@ -148,11 +125,12 @@ include $(COMMONRULES)
 $(CODESEGMENT):	$(CODEOBJECTS)
 		$(LD) -o $(CODESEGMENT) -r $(CODEOBJECTS) $(LDFLAGS)
 
-ifeq ($(FINAL), YES)
 $(TARGETS) $(APP):	spec $(OBJECTS)
-	$(MAKEROM) -s 9 -r $(TARGETS) -e $(APP) spec
+ifeq ($(FINAL), YES)
+	$(MAKEROM) -m -s 64 -r $(TARGETS) spec > $(MAPFILE)
 	makemask $(TARGETS)
 else
-$(TARGETS) $(APP):	spec $(OBJECTS)
-	$(MAKEROM) -r $(TARGETS) -e $(APP) spec
+	$(MAKEROM) -m -s 64 -r $(TARGETS) spec > $(MAPFILE)
 endif
+
+
