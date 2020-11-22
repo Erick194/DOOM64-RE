@@ -18,6 +18,8 @@ int PassInvalidTic;     // 800A55C4
 boolean doPassword = false; // 8005A7A0
 int CurPasswordSlot = 0;    // 8005ACBC
 
+char *passFeatures = "3n4bl3f34tvr3s??"; // New Pass Code By [GEC]
+
 void M_EncodePassword(byte *buff) // 8000BC10
 {
     byte encode[10];
@@ -595,6 +597,22 @@ int M_PasswordTicker(void) // 8000C774
                     if ((hectic_demo + 15) < hpassbuf)
                     {
                         run_hectic_demo = true;
+                        return ga_exit;
+                    }
+
+                    // [GEC] New Password Code Enable Features Menu.
+                    fpassbuf = passFeatures;
+                    passbuf = Passwordbuff;
+                    do
+                    {
+                        if (passwordChar[*passbuf++] != *fpassbuf++)
+                            break;
+
+                    } while (fpassbuf != (passFeatures + 16));
+
+                    if ((passFeatures + 15) < fpassbuf)
+                    {
+                        FeaturesUnlocked = true;
                         return ga_exit;
                     }
 
