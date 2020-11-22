@@ -468,6 +468,7 @@ int M_PasswordTicker(void) // 8000C774
 {
     byte *passbuf;
     char *hpassbuf;
+    char *fpassbuf;
     unsigned int buttons;
     unsigned int oldbuttons;
     boolean playsound;
