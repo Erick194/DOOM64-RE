@@ -5,6 +5,10 @@ ifndef FINAL
 FINAL = YES
 endif
 
+ifndef LOCAL
+LOCAL = USA
+endif
+
 ifeq ($(FINAL), YES)
 	OPTIMIZER       = -O2
 	LCDEFS          = -DNDEBUG -D_FINALROM -DF3DEX_GBI
@@ -21,6 +25,11 @@ ifeq ($(PLATFORM), BB)
 else
 	N64LIB          = -lgultra_d
 endif
+endif
+
+ifeq ($(LOCAL), USA)
+MASTER = UNDME00.SRB
+SRBTXT = Doom64
 endif
 
 APP	=	doom64.out
@@ -131,12 +140,12 @@ ifeq ($(PLATFORM), BB)
 LCOPTS	+=	-mips2
 LDFLAGS	+=	-lgcc
 ASFLAGS	+=	-mips2
+default:	$(TARGETS)
 else
 LDFLAGS	+=	-L$(GCCDIR)/mipse/lib -lkmc
 ASFLAGS	+=	-mips3
+default:	$(MASTER)
 endif
-
-default:	$(TARGETS)
 
 include $(COMMONRULES)
 
@@ -150,3 +159,8 @@ ifeq ($(FINAL), YES)
 else
 	$(MAKEROM) -r $(TARGETS) spec
 endif
+
+$(MASTER): $(TARGETS)
+	@copy $(TARGETS) $(MASTER)
+	@Tools\nrdc -p -d -c -t"$(SRBTXT)" $(MASTER)>$(MASTER).txt
+	@copy $(MASTER).txt con
