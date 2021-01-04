@@ -168,28 +168,36 @@ void G_InitNew (skill_t skill, int map, gametype_t gametype) // 800046F4
 
 	BT_DATA[0] = (buttons_t *)ActualConfiguration;
 
-	/*if (skill == sk_nightmare)
+	#if ENABLE_NIGHTMARE == 1
+	if (skill == sk_nightmare)
 	{
-		states[S_SARG_ATK1].tics = 2;
-		states[S_SARG_ATK2].tics = 2;
-		states[S_SARG_ATK3].tics = 2;
-		mobjinfo[MT_SERGEANT].speed = 15;
+		states[S_054].tics = 4; // S_SARG_ATK1
+		states[S_055].tics = 4; // S_SARG_ATK2
+		states[S_056].tics = 4; // S_SARG_ATK3
+		mobjinfo[MT_DEMON1].speed = 17; // MT_SERGEANT
+		mobjinfo[MT_DEMON2].speed = 17; // MT_SERGEANT2
 
-		mobjinfo[MT_BRUISERSHOT].speed = 40*FRACUNIT;
-		mobjinfo[MT_HEADSHOT].speed = 40*FRACUNIT;
-		mobjinfo[MT_TROOPSHOT].speed = 40*FRACUNIT;
+		mobjinfo[MT_PROJ_BRUISER1].speed = 20; // MT_BRUISERSHOT
+		mobjinfo[MT_PROJ_BRUISER2].speed = 20; // MT_BRUISERSHOT2
+		mobjinfo[MT_PROJ_HEAD].speed = 30; // MT_HEADSHOT value like Doom 64 Ex
+		mobjinfo[MT_PROJ_IMP1].speed = 20; // MT_TROOPSHOT
+		mobjinfo[MT_PROJ_IMP2].speed = 35; // MT_TROOPSHOT2 value like Doom 64 Ex
 	}
 	else
 	{
-		states[S_SARG_ATK1].tics = 4;
-		states[S_SARG_ATK2].tics = 4;
-		states[S_SARG_ATK3].tics = 4;
-		mobjinfo[MT_SERGEANT].speed = 10;
+		states[S_054].tics = 8; // S_SARG_ATK1
+		states[S_055].tics = 8; // S_SARG_ATK2
+		states[S_056].tics = 8; // S_SARG_ATK3
+		mobjinfo[MT_DEMON1].speed = 12; // MT_SERGEANT
+		mobjinfo[MT_DEMON2].speed = 12; // MT_SERGEANT2
 
-		mobjinfo[MT_BRUISERSHOT].speed = 30*FRACUNIT;
-		mobjinfo[MT_HEADSHOT].speed = 20*FRACUNIT;
-		mobjinfo[MT_TROOPSHOT].speed = 20*FRACUNIT;
-	}*/
+		mobjinfo[MT_PROJ_BRUISER1].speed = 15; // MT_BRUISERSHOT
+		mobjinfo[MT_PROJ_BRUISER2].speed = 15; // MT_BRUISERSHOT2
+		mobjinfo[MT_PROJ_HEAD].speed = 20; // MT_HEADSHOT
+		mobjinfo[MT_PROJ_IMP1].speed = 10; // MT_TROOPSHOT
+		mobjinfo[MT_PROJ_IMP2].speed = 20; // MT_TROOPSHOT2
+	}
+	#endif // ENABLE_NIGHTMARE
 }
 
 /*============================================================================  */

@@ -20,6 +20,9 @@ int CurPasswordSlot = 0;    // 8005ACBC
 
 char *passFeatures = "3n4bl3f34tvr3s??"; // New Pass Code By [GEC]
 
+// [GEC] NEW FLAGS
+#define NIGHTMARE	0x40
+
 void M_EncodePassword(byte *buff) // 8000BC10
 {
     byte encode[10];
@@ -31,8 +34,21 @@ void M_EncodePassword(byte *buff) // 8000BC10
     int maxclip, maxshell, maxcell, maxmisl;
     player_t* player;
 
+    #if ENABLE_NIGHTMARE == 1
+	int skillnightmare;
+	#endif // ENABLE_NIGHTMARE
+
     player = &players[0];
     D_memset(encode, 0, sizeof(encode));
+
+    #if ENABLE_NIGHTMARE == 1
+	//Check the nightmare difficulty
+	skillnightmare = 0;
+	if(gameskill == sk_nightmare)
+    {
+        skillnightmare = sk_nightmare;
+    }
+    #endif // ENABLE_NIGHTMARE
 
     //
     // Map and Skill
@@ -128,6 +144,13 @@ void M_EncodePassword(byte *buff) // 8000BC10
     // Artifacts
     //
     encode[5] |= (player->artifacts << 2);
+
+    #if ENABLE_NIGHTMARE == 1
+	//I used the ArmorType space to add the 0x40 flag to identify that the difficulty is nightmare
+	if(skillnightmare != 0) {
+        encode[5] |= NIGHTMARE;
+    }
+    #endif // ENABLE_NIGHTMARE
 
     decodebit[0] = (*(short*)&encode[0]);
     decodebit[1] = (*(short*)&encode[2]);
@@ -306,6 +329,15 @@ int M_DecodePassword(byte *inbuff, int *levelnum, int *skill, player_t *player) 
     // Get Skill
     //
     *skill = (decode[0] & 3);
+
+    #if ENABLE_NIGHTMARE == 1
+    //Check that the flag is 0x40, add the nightmare difficulty and remove the flag 0x80
+    if (decode[5] & NIGHTMARE)
+    {
+        decode[5] &= ~NIGHTMARE;
+        *skill = sk_nightmare;
+    }
+    #endif // ENABLE_NIGHTMARE
 
     //
     // Verify Skill

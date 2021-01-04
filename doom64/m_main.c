@@ -103,14 +103,20 @@ menuitem_t Menu_Title[2] = // 8005A978
 	{ 11, 115, 210 },   // Options
 };
 
+#if ENABLE_NIGHTMARE == 1
+menuitem_t Menu_Skill[5] = // 8005A990
+#else
 menuitem_t Menu_Skill[4] = // 8005A990
+#endif // ENABLE_NIGHTMARE
 {
     { 15, 102, 80 },    // Be Gentle!
     { 16, 102, 100},    // Bring it on!
     { 17, 102, 120},    // I own Doom!
     { 18, 102, 140},    // Watch me die!
     /* Disable on Doom 64 Original */
-    //{ 19, 102, 160},    // Nightmare
+    #if ENABLE_NIGHTMARE == 1
+    { 19, 102, 160},    // Nightmare
+    #endif // ENABLE_NIGHTMARE
 };
 
 menuitem_t Menu_Options[6] = // 8005A9C0
@@ -1008,7 +1014,11 @@ int M_MenuTicker(void) // 80007E0C
                         EnableExpPak = (M_ControllerPak() == 0);
 
                         MenuItem = Menu_Skill;
+                        #if ENABLE_NIGHTMARE == 1
+                        itemlines = 5;
+                        #else
                         itemlines = 4;
+                        #endif // ENABLE_NIGHTMARE
                         MenuCall = M_MenuTitleDrawer;
                         cursorpos = 1;  // Set Default Bring it on!
 

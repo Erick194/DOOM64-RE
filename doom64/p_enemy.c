@@ -515,6 +515,16 @@ void A_Chase (mobj_t *actor) // 8001146C
 	/* */
 	/* check for missile attack */
 	/* */
+	#if ENABLE_NIGHTMARE == 1
+	if ((gameskill == sk_nightmare || !actor->movecount) && actor->info->missilestate
+	&& P_CheckMissileRange (actor))
+	{
+		P_SetMobjState (actor, actor->info->missilestate);
+		if (gameskill != sk_nightmare)
+			actor->flags |= MF_JUSTATTACKED;
+		return;
+	}
+	#else
 	if ( (/*gameskill == sk_nightmare || */!actor->movecount) && actor->info->missilestate
 	&& P_CheckMissileRange (actor))
 	{
@@ -523,6 +533,8 @@ void A_Chase (mobj_t *actor) // 8001146C
 			actor->flags |= MF_JUSTATTACKED;
 		return;
 	}
+	#endif // ENABLE_NIGHTMARE
+
 
 	/* */
 	/* chase towards player */
