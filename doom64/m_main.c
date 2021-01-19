@@ -48,7 +48,7 @@ char *ControlText[] =   //8007517C
 #define M_TXT16 "Bring it on!"
 #define M_TXT17 "I own Doom!"
 #define M_TXT18 "Watch me die!"
-#define M_TXT19 "Nightmare"
+#define M_TXT19 "Nightmare!"
 #define M_TXT20 "Yes"
 #define M_TXT21 "No"
 #define M_TXT22 "Features"
@@ -1033,7 +1033,8 @@ int M_MenuTicker(void) // 80007E0C
                 case 16: // Bring it on!
                 case 17: // I own Doom!
                 case 18: // Watch me die!
-                //case 19: // Nightmare
+				case 19: // Nightmare!
+                
                     if (truebuttons)
                     {
                         S_StartSound(NULL, sfx_pistol);
