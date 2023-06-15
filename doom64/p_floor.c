@@ -430,6 +430,7 @@ int EV_BuildStairs(line_t *line, stair_e type) // 80013DB0
 				break;
 			}
 		} while(ok);
+		secnum = -1;
 	}
 	return rtn;
 }
