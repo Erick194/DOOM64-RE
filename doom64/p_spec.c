@@ -1031,8 +1031,8 @@ boolean P_UseSpecialLine (line_t *line, mobj_t *thing) // 800204BC
         case 122:		/* PlatDownWaitUpStay */
 			ok = EV_DoPlat(line, upWaitDownStay, 0);
 			break;
-        case 123:		/* Blazing PlatDownWaitUpStay */
-			ok = EV_DoPlat(line, blazeDWUS, 0);
+        case 123:		/* Blazing PlatUpWaitDownStay */
+			ok = EV_DoPlat(line, blazeUWDS, 0);
 			break;
         case 124:		/* Secret EXIT */
 			P_SecretExitLevel(line->tag);//(G_SecretExitLevel)
