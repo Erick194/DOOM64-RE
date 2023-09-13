@@ -698,6 +698,11 @@ void	*W_GetMapLump(int lump);
 void	DecodeD64(unsigned char *input, unsigned char *output);
 void	DecodeJaguar(unsigned char *input, unsigned char *output);
 
+/*---------*/
+/* ENCODES */
+/*---------*/
+unsigned char* EncodeD64(unsigned char* input, int inputlen, int* size);
+
 /*------------*/
 /* BASE LEVEL */
 /*------------*/
