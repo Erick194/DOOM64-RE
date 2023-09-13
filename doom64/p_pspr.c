@@ -100,7 +100,7 @@ void P_MovePsprites (player_t *player) // 8001B14C
 /*
 =================
 =
-= P_NoiseAlert
+= P_RecursiveSound
 =
 = If a monster yells at a player, it will alert other monsters to the player
 =
@@ -726,7 +726,7 @@ void A_Saw (player_t *player, pspdef_t *psp) // 8001BC1C
 /*
 ==================
 =
-= A_FireMissile
+= A_ChainSawReady
 =
 ==================
 */
@@ -776,7 +776,7 @@ void A_FireBFG (player_t *player, pspdef_t *psp) // 8001BE78
 /*
 ==================
 =
-= A_FirePlasma
+= A_PlasmaAnimate
 =
 ==================
 */
