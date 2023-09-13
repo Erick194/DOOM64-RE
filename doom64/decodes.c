@@ -840,7 +840,7 @@ unsigned char* EncodeD64(unsigned char* input, int inputlen, int* size) {
     int cpyCountNext, cpyCount, cntMin, cntMax;
     boolean deleteNode, skipCopy;
 
-    unsigned char* output = (unsigned char*)malloc(inputlen * 2);
+    unsigned char* output = (unsigned char*)Z_Alloc(inputlen * 2, PU_STATIC, NULL);
 
     InitTables();
 
@@ -862,7 +862,7 @@ unsigned char* EncodeD64(unsigned char* input, int inputlen, int* size) {
     D_memset(hashNext, 0, windowSize * sizeof(short));
     D_memset(hashPrev, 0, windowSize * sizeof(short));
 
-    window = (byte*)malloc(windowSize * sizeof(byte));
+    window = (byte*)Z_Alloc(windowSize * sizeof(byte), PU_STATIC, NULL);
     D_memset(window, 0, windowSize * sizeof(byte));
 
     // Initializes hash encoding tables
