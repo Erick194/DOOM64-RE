@@ -179,9 +179,13 @@ void R_WallPrep(seg_t *seg) // 80026A44
 	unsigned int bottomcolor;
 	unsigned int tmp_upcolor;
 	unsigned int tmp_lowcolor;
+	int curRowoffset;
 
     li = seg->linedef;
     side = seg->sidedef;
+
+    // [GEC] Prevents errors in textures in T coordinates, but is not applied to switches
+    curRowoffset = side->rowoffset & (127 << FRACBITS);
 
     f_ceilingheight = frontsector->ceilingheight >> 16;
     f_floorheight = frontsector->floorheight >> 16;
@@ -222,12 +226,12 @@ void R_WallPrep(seg_t *seg) // 80026A44
             if (li->flags & ML_DONTPEGTOP)
             {
                 height = (f_ceilingheight - b_ceilingheight);
-                rowoffs = (side->rowoffset >> 16) + height;
+                rowoffs = (curRowoffset >> 16) + height;
             }
             else
             {
                 height = (f_ceilingheight - b_ceilingheight);
-                rowoffs = (height + 127 & -128) + (side->rowoffset >> 16);
+                rowoffs = (height + 127 & -128) + (curRowoffset >> 16);
             }
 
             if (li->flags & ML_BLENDING)
@@ -292,11 +296,11 @@ void R_WallPrep(seg_t *seg) // 80026A44
 
             if ((li->flags & ML_DONTPEGBOTTOM) == 0)
             {
-                rowoffs = side->rowoffset >> 16;
+                rowoffs = curRowoffset >> 16;
             }
             else
             {
-                rowoffs = height + (side->rowoffset >> 16);
+                rowoffs = height + (curRowoffset >> 16);
             }
 
             if (li->flags & ML_BLENDING)
@@ -356,17 +360,17 @@ void R_WallPrep(seg_t *seg) // 80026A44
     if (li->flags & ML_DONTPEGBOTTOM)
     {
         height = m_top - m_bottom;
-        rowoffs = (height + 127 & -128) + (side->rowoffset >> 16);
+        rowoffs = (height + 127 & -128) + (curRowoffset >> 16);
     }
     else if (li->flags & ML_DONTPEGTOP)
     {
-        rowoffs = (side->rowoffset >> 16) - m_bottom;
+        rowoffs = (curRowoffset >> 16) - m_bottom;
         height = m_top - m_bottom;
     }
     else
     {
         height = m_top - m_bottom;
-        rowoffs = (side->rowoffset >> 16) + height;
+        rowoffs = (curRowoffset >> 16) + height;
     }
 
     if (li->flags & ML_BLENDING)
@@ -406,6 +410,9 @@ void R_RenderWall(seg_t *seg, int flags, int texture, int topHeight, int bottomH
     vertex_t *v2;
     int cms, cmt;
     int wshift, hshift;
+
+    // [GEC] Prevents errors in textures in S coordinates
+    int curTextureoffset = (seg->sidedef->textureoffset + seg->offset) & (127 << FRACBITS);
 
     if (texture != 16)
     {
@@ -495,7 +502,7 @@ void R_RenderWall(seg_t *seg, int flags, int texture, int topHeight, int bottomH
         VTX1[1].v.ob[2] = VTX1[2].v.ob[2] = (signed short)-(v2->y >> 16);
 
         // texture s coordinates
-        VTX1[0].v.tc[0] = VTX1[3].v.tc[0] = ((seg->sidedef->textureoffset + seg->offset) >> 11);
+        VTX1[0].v.tc[0] = VTX1[3].v.tc[0] = (curTextureoffset >> 11);
         VTX1[1].v.tc[0] = VTX1[2].v.tc[0] = VTX1[0].v.tc[0] + (seg->length << 1);
 
         // texture t coordinates
