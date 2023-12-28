@@ -17,6 +17,11 @@ macroactivator_t macroqueue[4]; // 800A6100
 int         macroidx1;          // 800A6120
 int         macroidx2;          // 800A6124
 
+// [GEC]
+// Prevents crashes when changing the special line to 0,
+// causing the index of the initial macro to be lost.
+int         tempMacroIndex;
+
 int P_StartMacro(int macroindex, line_t *line, mobj_t *thing) // 80021088
 {
     macro_t *macro;
@@ -37,6 +42,7 @@ int P_StartMacro(int macroindex, line_t *line, mobj_t *thing) // 80021088
     macroactivator = thing;
     macrothinker = NULL;
     macroline = line;
+    tempMacroIndex = SPECIALMASK(macroline->special)-256; // [GEC] temporarily save macro index
 
     D_memcpy(&macrotempline, line, sizeof(line_t));
     P_ChangeSwitchTexture(line, line->special & MLU_REPEAT);
@@ -57,7 +63,8 @@ int P_SuspendMacro(void) // 80021148
 
     if (!(macroline->special & MLU_REPEAT))
     {
-        macros[SPECIALMASK(macroline->special)-256]->id = 0;
+        //macros[SPECIALMASK(macroline->special)-256]->id = 0;
+        macros[tempMacroIndex]->id = 0;
         macroline->special = 0;
     }
 
@@ -154,7 +161,8 @@ void P_RestartMacro(line_t *line, int id) // 80021384
 
     if (macrocounter == 0)
     {
-        macro = macros[SPECIALMASK(macroline->special)-256];
+        //macro = macros[SPECIALMASK(macroline->special)-256];
+        macro = macros[tempMacroIndex];
 
         /* find the first macro in the batch to restart on */
         while((macro->id != 0) && (macro->id != id))
